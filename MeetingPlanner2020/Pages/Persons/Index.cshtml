@@ -1,0 +1,48 @@
+﻿@page
+@model MeetingPlanner2020.Pages.Persons.IndexModel
+
+@{
+    ViewData["Title"] = "Members";
+}
+
+<h1>Members</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].Lastname)
+            </th>    
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].Calling)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Person) {
+        <tr>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a> |
+                <a asp-page="./Details" asp-route-id="@item.ID"><button type="button" class="btn btn-primary"><i class="fa fa-eye"></i></button></a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID"><button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calling)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

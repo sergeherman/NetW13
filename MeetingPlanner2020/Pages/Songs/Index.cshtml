@@ -1,0 +1,36 @@
+﻿@page
+@model MeetingPlanner2020.Pages.Songs.IndexModel
+
+@{
+    ViewData["Title"] = "Songs";
+}
+
+<h1>Songs</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Song[0].SongTitle)
+            </th>            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Song) {
+        <tr>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a> |
+                <a asp-page="./Details" asp-route-id="@item.ID"><button type="button" class="btn btn-primary"><i class="fa fa-eye"></i></button></a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID"><button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SongTitle)
+            </td>            
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+﻿@page
+@model MeetingPlanner2020.Pages.Meetings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].dateOf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].timeOf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].Conducting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].PrayerOpening)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].PrayerClosing)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Meeting) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.timeOf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conducting.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrayerOpening.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrayerClosing.Fullname)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

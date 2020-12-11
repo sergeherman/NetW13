@@ -1,0 +1,45 @@
+﻿@page
+@model MeetingPlanner2020.Pages.Persons.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Person.Firstname" class="control-label"></label>
+                <input asp-for="Person.Firstname" class="form-control" />
+                <span asp-validation-for="Person.Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.Lastname" class="control-label"></label>
+                <input asp-for="Person.Lastname" class="form-control" />
+                <span asp-validation-for="Person.Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.Calling" class="control-label"></label>
+                <select asp-for="Person.Calling" class="form-control"
+                        asp-items="Html.GetEnumSelectList<MeetingPlanner2020.Models.LeadershipCalling>()"></select>
+                <span asp-validation-for="Person.Calling" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

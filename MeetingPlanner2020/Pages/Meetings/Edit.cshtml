@@ -1,0 +1,55 @@
+﻿@page
+@model MeetingPlanner2020.Pages.Meetings.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Meeting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Meeting.ID" />
+            <div class="form-group">
+                <label asp-for="Meeting.dateOf" class="control-label"></label>
+                <input asp-for="Meeting.dateOf" class="form-control" />
+                <span asp-validation-for="Meeting.dateOf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Meeting.timeOf" class="control-label"></label>
+                <input asp-for="Meeting.timeOf" class="form-control" />
+                <span asp-validation-for="Meeting.timeOf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Meeting.ConductingId" class="control-label"></label>
+                <select asp-for="Meeting.ConductingId" class="form-control" asp-items="ViewBag.ConductingId"></select>
+                <span asp-validation-for="Meeting.ConductingId" class="text-danger"></span>               
+            </div>
+            <div class="form-group">
+                <label asp-for="Meeting.PrayerOpeningId" class="control-label"></label>
+                <select asp-for="Meeting.PrayerOpeningId" class="form-control" asp-items="ViewBag.PrayerOpeningId"></select>
+                <span asp-validation-for="Meeting.PrayerOpeningId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Meeting.PrayerClosingId" class="control-label"></label>
+                <select asp-for="Meeting.PrayerClosingId" class="form-control" asp-items="ViewBag.PrayerClosingId"></select>
+                <span asp-validation-for="Meeting.PrayerClosingId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
